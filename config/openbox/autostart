@@ -1,0 +1,28 @@
+# 1. مدير الظلال والشفافية (Picom)
+# ضروري جداً ليعمل Skippy-XD بشكل جميل ولإضافة ظلال للنوافذ
+picom --config ~/.config/picom.conf &
+
+# 2. نظام التنبيهات (Dunst)
+# لإظهار رسائل النظام (مثل مستوى الصوت أو البطارية) في زاوية الشاشة
+dunst &
+
+# 3. مشغل النوافذ السريع (Skippy-XD)
+# تشغيله كـ Daemon يجعل استجابته فورية عند ضغط Alt+Tab
+skippy-xd --start-daemon &
+
+# 5. مدير الصلاحيات (Polkit Agent)
+# هام جداً! بدونه لن يفتح Caja الفلاشات أو يطلب كلمة المرور عند تثبيت البرامج من الواجهة
+/usr/local/libexec/polkit-gnome-authentication-agent-1 &
+
+# يقوم بتنظيف العمليات العالقة من الجلسات السابقة
+~/scripts/desktop-kill-shit.sh &
+
+# 1. ضبط الخلفية فوراً (مع التأكد من المسار الصحيح)
+(sleep 1 && ~/scripts/random_wallpaper.sh ~/gfx/wallpapers) &
+
+
+# 3. تشغيل شريط tint2 باستخدام سكربت 
+(sleep 2 && ~/scripts/__openbox_restart_tint2.sh) &
+
+
+(sleep 3 && ~/scripts/__openbox_restart_plank.sh) &
